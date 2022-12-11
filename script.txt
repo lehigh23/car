@@ -23,7 +23,10 @@ running = True
 while running:
     car2_loc[1] += 1
     if car2_loc[1] > height:
-        car2_loc[1] = -200
+        if random.randint(0, 1) == 0:
+            car2_loc.center = right_lane, -200
+        else:
+            car2_loc.center = left_lane, -200
 
     for event in pygame.event.get():
         if event.type == QUIT:
