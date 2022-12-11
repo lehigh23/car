@@ -9,6 +9,7 @@ pygame.init()
 screen = pygame.display.set_mode(size)
 pygame.display.set_caption("Car game")
 screen.fill((60, 220, 0))
+pygame.draw.rect(screen, (50, 50, 50), (width/2-road_w/2, 0, road_w, height))
 pygame.display.update()
 
 running = True
