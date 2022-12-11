@@ -25,5 +25,8 @@ while running:
         if event.type == QUIT:
             running = False
     screen.blit(car, car_loc)
+    pygame.display.update()
+
+pygame.quit()
 
 pygame.quit()
