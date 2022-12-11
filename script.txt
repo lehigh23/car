@@ -21,12 +21,15 @@ car2_loc.center = left_lane, height*0.2
 
 running = True
 while running:
-    car2_loc[1] += 1
+    car2_loc[1] += 2
     if car2_loc[1] > height:
         if random.randint(0, 1) == 0:
             car2_loc.center = right_lane, -200
         else:
             car2_loc.center = left_lane, -200
+    if car_loc[0] == car2_loc[0] and car2_loc[1] > car_loc[1] - 250:
+        print("GAME OVER! YOU LOST!")
+        break
 
     for event in pygame.event.get():
         if event.type == QUIT:
