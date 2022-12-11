@@ -21,11 +21,15 @@ car_loc.center = width/2 + road_w/4, height*0.8
 car2 = pygame.image.load("otherCar.png")
 car2_loc = car2.get_rect()
 car2_loc.center = width/2 - road_w/4, height*0.2
+
 running = True
 while running:
     for event in pygame.event.get():
         if event.type == QUIT:
             running = False
+        if event.type == KEYDOWN:
+            if event.key in [K_a, K_LEFT]:
+                car_loc = car_loc.move([-int(road_w / 2), 0])
     screen.blit(car, car_loc)
     screen.blit(car2, car2_loc)
     pygame.display.update()
