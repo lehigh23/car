@@ -2,14 +2,16 @@ import pygame
 from pygame.locals import *
 import random
 
-pygame.init()
-running = True
 size = width, height = (800, 800)
+road_w = int(width/1.6)
+
+pygame.init()
 screen = pygame.display.set_mode(size)
 pygame.display.set_caption("Car game")
 screen.fill((60, 220, 0))
 pygame.display.update()
 
+running = True
 while running:
     for event in pygame.event.get():
         if event.type == QUIT:
