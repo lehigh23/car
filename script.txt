@@ -10,8 +10,7 @@ roadmark_w = int(width / 80)
 right_lane = width / 2 + road_w / 4
 left_lane = width / 2 - road_w / 4
 # animation parameters
-speed = 2
-# initialize the app
+speed = 3
 pygame.init()
 running = True
 # set window size
@@ -24,8 +23,6 @@ screen.fill((60, 220, 0))
 pygame.display.update()
 # load player vehicle
 car = pygame.image.load("car.png")
-# resize image
-# car = pygame.transform.scale(car, (250, 250))
 car_loc = car.get_rect()
 car_loc.center = right_lane, height * 0.8
 # load enemy vehicle
@@ -37,12 +34,12 @@ counter = 0
 # game loop
 while running:
     counter += 1
-    # increase game difficulty overtime
-    if counter == 2048:
+    # game difficulty
+    if counter == 1400:
         speed += 0.25
         counter = 0
         print("level up", speed)
-    # animate enemy vehicle
+    # enemy vehicle
     car2_loc[1] += speed
     if car2_loc[1] > height:
         # randomly select lane
@@ -67,18 +64,22 @@ while running:
             # move user car to the right
             if event.key in [K_d, K_RIGHT]:
                 car_loc = car_loc.move([int(road_w/2), 0])
+    if car_loc[0] > 600 or car_loc[0] < 100:
+        print("OUT")
+        running = False
+        break
     # draw road
     pygame.draw.rect(screen, (50, 50, 50), (width / 2 - road_w / 2, 0, road_w, height))
     # draw centre line
     pygame.draw.rect(screen, (255, 240, 60), (width / 2 - roadmark_w / 2, 0, roadmark_w, height))
-    # draw left road marking
+    # draw left roadmark
     pygame.draw.rect(screen, (255, 255, 255), (width / 2 - road_w / 2 + roadmark_w * 2, 0, roadmark_w, height))
-    # draw right road marking
+    # draw right roadmark
     pygame.draw.rect(screen, (255, 255, 255), (width / 2 + road_w / 2 - roadmark_w * 2.6, 0, roadmark_w, height))
     # place car images on the screen
     screen.blit(car, car_loc)
     screen.blit(car2, car2_loc)
     # apply changes
     pygame.display.update()
-# collapse application window
+# closing application window
 pygame.quit()
