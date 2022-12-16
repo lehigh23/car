@@ -31,6 +31,7 @@ car2_loc = car2.get_rect()
 car2_loc.center = left_lane, height * 0.2
 
 color = (50, 50, 50)
+set=[(50, 50, 50), (100, 100, 100), (200, 200, 200)]
 counter = 0
 score_value = 0
 font = pygame.font.Font("freesansbold.ttf", 28)
